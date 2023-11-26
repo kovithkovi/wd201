@@ -1,0 +1,2 @@
+This sample.txt
+ welcome to the node.js file system
