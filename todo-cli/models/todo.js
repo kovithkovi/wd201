@@ -1,6 +1,5 @@
 "use strict";
 const { Model, Op } = require("sequelize");
-const { connect } = require("../connectDB");
 
 module.exports = (sequelize, DataTypes) => {
   class Todo extends Model {
