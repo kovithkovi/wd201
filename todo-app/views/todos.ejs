@@ -18,9 +18,9 @@
         <% for(var i=0; i<overdue.length; i++) {%>
             <li class="Todo-Item">
                 <div class="flex items-center w-fit my-2 py-1 px-2 rounded hover:bg-purple-50 ">
-                    <input type="checkbox" name="" id="overdue-<%= i %>"
+                    <input type="checkbox" name="" id="count-overdue-<%= i %>"
                         class="w-4 h-4 text-blue-600 bg-grey-100 rounded border">
-                    <label for="overdue-<%= i %>" class="ml-2 text-sm text-gray-600 cursor-pointer">
+                    <label for="count-overdue-<%= i %>" class="ml-2 text-sm text-gray-600 cursor-pointer">
                         <%= overdue[i].title %>
                     </label>
                     <a href="" class="hidden trash-icon ml-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -42,9 +42,9 @@
         <% for(var i=0; i<duetoday.length; i++) {%>
             <li class="Todo-Item">
                 <div class="flex items-center w-fit my-2 py-1 px-2 rounded hover:bg-purple-50 ">
-                    <input type="checkbox" name="" id="duetoday-<%= i %>"
+                    <input type="checkbox" name="" id="count-due-today-<%= i %>"
                         class="w-4 h-4 text-blue-600 bg-grey-100 rounded border">
-                    <label for="duetoday-<%= i %>" class="ml-2 text-sm text-gray-600 cursor-pointer">
+                    <label for="count-due-today-<%= i %>" class="ml-2 text-sm text-gray-600 cursor-pointer">
                         <%= duetoday[i].title %>
                     </label>
                     <a href="" class="hidden trash-icon ml-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -66,9 +66,9 @@
         <% for(var i=0; i<duelater.length; i++) {%>
             <li class="Todo-Item">
                 <div class="flex items-center w-fit my-2 py-1 px-2 rounded hover:bg-purple-50 ">
-                    <input type="checkbox" name="" id="duelater-<%= i %>"
+                    <input type="checkbox" name="" id="count-due-later-<%= i %>"
                         class="w-4 h-4 text-blue-600 bg-grey-100 rounded border">
-                    <label for="duelater-<%= i %>" class="ml-2 text-sm text-gray-600 cursor-pointer">
+                    <label for="count-due-later-<%= i %>" class="ml-2 text-sm text-gray-600 cursor-pointer">
                         <%= duelater[i].title %>
                     </label>
                     <a href="" class="hidden trash-icon ml-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
