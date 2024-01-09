@@ -8,14 +8,22 @@ app.use(bodyParser.json());
 
 app.set("view engine", "ejs");
 app.get("/", async (request, response) => {
-  const allTodos = await Todo.getTodos();
+  const overdue = await Todo.getOverdue();
+  const duetoday = await Todo.getdueToday();
+  const duelater = await Todo.getDuelater();
+  // const today = new Date().toISOString()
+  // const dueToday =
   if (request.accepts("html")) {
     response.render("index", {
-      allTodos,
+      overdue,
+      duelater,
+      duetoday,
     });
   } else {
     response.json({
-      allTodos,
+      overdue,
+      duelater,
+      duetoday,
     });
   }
 });

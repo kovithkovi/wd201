@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 "use strict";
-const { Model } = require("sequelize");
+const { Model, Op } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Todo extends Model {
     /**
@@ -19,6 +19,36 @@ module.exports = (sequelize, DataTypes) => {
 
     static getTodos() {
       return this.findAll();
+    }
+
+    static getOverdue() {
+      return this.findAll({
+        where: {
+          dueDate: {
+            [Op.lt]: new Date(), // Find items with dueDate less than today
+          },
+        },
+      });
+    }
+
+    static getdueToday() {
+      return this.findAll({
+        where: {
+          dueDate: {
+            [Op.eq]: new Date(),
+          },
+        },
+      });
+    }
+
+    static getDuelater() {
+      return this.findAll({
+        where: {
+          dueDate: {
+            [Op.gt]: new Date(),
+          },
+        },
+      });
     }
 
     markAsCompleted() {
