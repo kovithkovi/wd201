@@ -10,7 +10,7 @@
 <body>
     <div class="flex">
         <h5>Overdue</h5>
-        <p class="mx-2 px-2 bg-gray-300 rounded">
+        <p class="mx-2 px-2 bg-gray-300 rounded" id="count-overdue">
             <%= overdue.length %>
         </p>
     </div>
@@ -34,7 +34,7 @@
     </ul>
     <div class="flex">
         <h5>Due Today</h5>
-        <p class="mx-2 px-2 bg-gray-300 rounded">
+        <p class="mx-2 px-2 bg-gray-300 rounded" id="count-due-today">
             <%= duetoday.length %>
         </p>
     </div>
@@ -58,7 +58,7 @@
     </ul>
     <div class="flex">
         <h5>Due Later</h5>
-        <p class="mx-2 px-2 bg-gray-300 rounded">
+        <p class="mx-2 px-2 bg-gray-300 rounded" id="count-due-later">
             <%= duelater.length %>
         </p>
     </div>
