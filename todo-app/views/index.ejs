@@ -7,6 +7,35 @@
     <link rel="stylesheet" href="./css/styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
+    <script>
+        function TodoUpdate(id) {
+            console.log(id)
+            fetch(`/todos/${id}/markAsCompleted`, {
+                method: "put",
+                headers: { "Content-Type": "application/json" },
+            })
+                .then((res) => {
+                    window.location.reload();
+                })
+                .catch((err) => console.error(err))
+        };
+        function deleteTodo(id) {
+            console.log(id)
+            fetch(`/todos/${id}`, {
+                method: "delete",
+                headers: { "Content-Type": "application/json" },
+            })
+                .then((res) => {
+                    if (res.ok) {
+                        window.location.reload();
+                    }
+                })
+                .catch((err) => console.log(err))
+        }
+        function hello() {
+            console.log("hello")
+        }
+    </script>
 </head>
 
 <body>
