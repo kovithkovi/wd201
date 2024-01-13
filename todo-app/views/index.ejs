@@ -14,7 +14,7 @@
             .getAttribute('content')
         function TodoUpdate(id) {
             console.log(id)
-            fetch(`/todos/${id}/markAsCompleted`, {
+            fetch(`/todos/${id}`, {
                 method: "put",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
           dueDate: {
             [Op.lt]: new Date(), // Find items with dueDate less than today
           },
+          completed: false,
         },
       });
     }
@@ -37,6 +38,7 @@ module.exports = (sequelize, DataTypes) => {
           dueDate: {
             [Op.eq]: new Date(),
           },
+          completed: false,
         },
       });
     }
@@ -47,6 +49,15 @@ module.exports = (sequelize, DataTypes) => {
           dueDate: {
             [Op.gt]: new Date(),
           },
+          completed: false,
+        },
+      });
+    }
+
+    static getCompletedTodos() {
+      return this.findAll({
+        where: {
+          completed: true,
         },
       });
     }
@@ -57,6 +68,10 @@ module.exports = (sequelize, DataTypes) => {
           id,
         },
       });
+    }
+
+    setCompletionStatus(comple) {
+      return this.update({ completed: comple });
     }
 
     markAsCompleted() {
