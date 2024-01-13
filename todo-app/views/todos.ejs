@@ -18,8 +18,13 @@
         <% for(var i=0; i<overdue.length; i++) {%>
             <li class="Todo-Item">
                 <div class="flex items-center w-fit my-2 py-1 px-2 rounded hover:bg-purple-50 ">
+<<<<<<< HEAD
                     <input type="checkbox" name="" id="count-overdue<%= i %>" onclick="TodoUpdate(<%= overdue[i].id %>)"
                         <%=overdue[i].completed ? "checked" : "" %>
+=======
+                    <input type="checkbox" name="" id="count-overdue<%= i %>"
+                        onclick="TodoUpdate(<%= overdue[i].id %>)" <%=overdue[i].completed ? "checked" : "" %>
+>>>>>>> 479caa7f61c5fc88db0e03cde6fcdfa6e10dfccd
                     class="w-4 h-4 text-blue-600 bg-grey-100 rounded border">
                     <label for="count-overdue<%= i %>" class="ml-2 text-sm text-gray-600 cursor-pointer">
                         <%= overdue[i].title %>
