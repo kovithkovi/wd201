@@ -11,61 +11,78 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Todo.belongsTo(models.User, {
+        foreignKey: "userId",
+      });
     }
 
-    static addTodo({ title, dueDate }) {
-      return this.create({ title: title, dueDate: dueDate, completed: false });
+    static addTodo({ title, dueDate, userId }) {
+      return this.create({
+        title: title,
+        dueDate: dueDate,
+        completed: false,
+        userId,
+      });
     }
 
-    static getTodos() {
-      return this.findAll();
+    static getTodos(userId) {
+      return this.findAll({
+        where: {
+          userId,
+        },
+      });
     }
 
-    static getOverdue() {
+    static getOverdue(userId) {
       return this.findAll({
         where: {
           dueDate: {
             [Op.lt]: new Date(), // Find items with dueDate less than today
           },
+          userId,
           completed: false,
         },
       });
     }
 
-    static getdueToday() {
+    static getdueToday(userId) {
       return this.findAll({
         where: {
           dueDate: {
             [Op.eq]: new Date(),
           },
+          userId,
           completed: false,
         },
       });
     }
 
-    static getDuelater() {
+    static getDuelater(userId) {
       return this.findAll({
         where: {
           dueDate: {
             [Op.gt]: new Date(),
           },
           completed: false,
+          userId,
         },
       });
     }
 
-    static getCompletedTodos() {
+    static getCompletedTodos(userId) {
       return this.findAll({
         where: {
           completed: true,
+          userId,
         },
       });
     }
 
-    static async removeTodo(id) {
+    static async removeTodo(id, userId) {
       return this.destroy({
         where: {
           id,
+          userId,
         },
       });
     }
