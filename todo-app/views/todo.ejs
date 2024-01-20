@@ -52,7 +52,6 @@
     <div class="grid grid-cols-6">
         <div class="col-start-3 col-span-2">
             <%- include('header.ejs') %>
-                <a href="/signout">Sign out</a>
                 <form action="/todos" method="post">
                     <%- include('notifications.ejs') %>
                         <input type="hidden" name="_csrf" value="<%= csrfToken%>">
@@ -71,6 +70,8 @@
                 </form>
                 <%- include('todos.ejs') %>
                     <%- include('footer.ejs') %>
+                        <button class="bg-red-500 text-white p-2 rounded text-sm"><a href="/signout">Sign
+                                out</a></button>
         </div>
 
     </div>
