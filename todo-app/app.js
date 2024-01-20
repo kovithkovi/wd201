@@ -81,6 +81,11 @@ app.use(function (request, response, next) {
 app.post("/users", async (request, response) => {
   const hasedPwd = await bcrypt.hash(request.body.password, saltRounds);
   console.log(hasedPwd);
+  const { firstName, lastName, email, password } = request.body;
+  if (!firstName || !lastName || !email || !password) {
+    request.flash("error", "Enter the details");
+    return response.redirect("/signup");
+  }
   try {
     const user = await User.create({
       firstName: request.body.firstName,
@@ -202,6 +207,11 @@ app.post(
   "/todos",
   connectEnsureLogin.ensureLoggedIn(),
   async function (request, response) {
+    const { title, dueDate } = request.body;
+    if (!title || !dueDate) {
+      request.flash("error", "Title and due date are required");
+      return response.redirect("/todos");
+    }
     try {
       await Todo.addTodo({
         title: request.body.title,

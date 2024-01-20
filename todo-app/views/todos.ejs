@@ -18,12 +18,8 @@
         <% for(var i=0; i<overdue.length; i++) {%>
             <li class="Todo-Item">
                 <div class="flex items-center w-fit my-2 py-1 px-2 rounded hover:bg-purple-50 ">
-                    <input type="checkbox" name="" id="count-overdue<%= i %>" onclick="TodoUpdate(<%= overdue[i].id %>)"
-                        <%=overdue[i].completed ? "checked" : "" %>
-                    <input type="checkbox" name="" id="count-overdue<%= i %>" onclick="TodoUpdate(<%= overdue[i].id %>)"
-                        <%=overdue[i].completed ? "checked" : "" %>
-                    <input type="checkbox" name="" id="count-overdue<%= i %>" onclick="TodoUpdate(<%= overdue[i].id %>)"
-                        <%=overdue[i].completed ? "checked" : "" %>
+                    <input type="checkbox" name="title" id="count-overdue<%= i %>"
+                        onclick="TodoUpdate(<%= overdue[i].id %>)" <%=overdue[i].completed ? "checked" : "" %>
                     class="w-4 h-4 text-blue-600 bg-grey-100 rounded border">
                     <label for="count-overdue<%= i %>" class="ml-2 text-sm text-gray-600 cursor-pointer">
                         <%= overdue[i].title %>
@@ -49,7 +45,7 @@
         <% for(var i=0; i<duetoday.length; i++) {%>
             <li class="Todo-Item">
                 <div class="flex items-center w-fit my-2 py-1 px-2 rounded hover:bg-purple-50 ">
-                    <input type="checkbox" name="" id="count-due-today<%= i %>"
+                    <input type="checkbox" name="title" id="count-due-today<%= i %>"
                         onclick="TodoUpdate(<%= duetoday[i].id %>)" <%=duetoday[i].completed ? "checked" : "" %>
                     class="w-4 h-4 text-blue-600 bg-grey-100 rounded border">
                     <label for="count-due-today<%= i %>" class="ml-2 text-sm text-gray-600 cursor-pointer">
@@ -76,7 +72,7 @@
         <% for(var i=0; i<duelater.length; i++) {%>
             <li class="Todo-Item">
                 <div class="flex items-center w-fit my-2 py-1 px-2 rounded hover:bg-purple-50 ">
-                    <input type="checkbox" name="" id="count-due-later<%= i %>"
+                    <input type="checkbox" name="title" id="count-due-later<%= i %>"
                         onclick="TodoUpdate(<%= duelater[i].id %>)" <%=duelater[i].completed ? "checked" : "" %>
                     class="w-4 h-4 text-blue-600 bg-grey-100 rounded border">
                     <label for="count-due-later<%= i %>" class="ml-2 text-sm text-gray-600 cursor-pointer">
@@ -102,7 +98,7 @@
                     <% for(var i=0; i<competed.length; i++) {%>
                         <li class="Todo-Item">
                             <div class="flex items-center w-fit my-2 py-1 px-2 rounded hover:bg-purple-50 ">
-                                <input type="checkbox" name="" id="count-completed<%= i %>"
+                                <input type="checkbox" name="title" id="count-completed<%= i %>"
                                     onclick="TodoUpdate(<%= competed[i].id %>)" <%=competed[i].completed ? "checked"
                                     : "" %>
                                 class="w-4 h-4 text-blue-600 bg-grey-100 rounded border">

@@ -14,12 +14,14 @@ module.exports = {
       title: {
         type: Sequelize.STRING,
         allowNull: false,
+        notNull: true,
         validate: {
           notNull: true,
           len: 5,
         },
       },
       dueDate: {
+        notNull: true,
         allowNull: false,
         type: Sequelize.DATEONLY,
       },
