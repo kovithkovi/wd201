@@ -42,9 +42,6 @@
                 })
                 .catch((err) => console.log(err))
         }
-        function hello() {
-            console.log("hello")
-        }
     </script>
 </head>
 
@@ -70,8 +67,7 @@
                 </form>
                 <%- include('todos.ejs') %>
                     <%- include('footer.ejs') %>
-                        <button class="bg-red-500 text-white p-2 rounded text-sm"><a href="/signout">Sign
-                                out</a></button>
+                        <button class="bg-red-500 text-white p-2 rounded"><a href="/signout">signout</a></button>
         </div>
 
     </div>
