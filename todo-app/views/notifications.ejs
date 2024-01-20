@@ -1,0 +1,7 @@
+<% if(messages && messages.error && messages.error.length> 0) { %>
+    <% for(var i=0; i<messages.error.length; i++) { %>
+        <li class="text-white bg-red-500 h-8 rounded ">
+            <%= messages.error[i] %>
+        </li>
+        <% } %>
+            <% } %>

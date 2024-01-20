@@ -20,13 +20,10 @@
                 <div class="flex items-center w-fit my-2 py-1 px-2 rounded hover:bg-purple-50 ">
                     <input type="checkbox" name="" id="count-overdue<%= i %>" onclick="TodoUpdate(<%= overdue[i].id %>)"
                         <%=overdue[i].completed ? "checked" : "" %>
-<<<<<<< HEAD
                     <input type="checkbox" name="" id="count-overdue<%= i %>" onclick="TodoUpdate(<%= overdue[i].id %>)"
                         <%=overdue[i].completed ? "checked" : "" %>
-=======
-                    <input type="checkbox" name="" id="count-overdue<%= i %>"
-                        onclick="TodoUpdate(<%= overdue[i].id %>)" <%=overdue[i].completed ? "checked" : "" %>
->>>>>>> 726bb757b460233d2da79b978bd68a2de32af65d
+                    <input type="checkbox" name="" id="count-overdue<%= i %>" onclick="TodoUpdate(<%= overdue[i].id %>)"
+                        <%=overdue[i].completed ? "checked" : "" %>
                     class="w-4 h-4 text-blue-600 bg-grey-100 rounded border">
                     <label for="count-overdue<%= i %>" class="ml-2 text-sm text-gray-600 cursor-pointer">
                         <%= overdue[i].title %>
@@ -98,11 +95,7 @@
                 <div class="flex">
                     <h5>Completed Items</h5>
                     <p class="mx-2 px-2 bg-gray-300 rounded" id="count-completed">
-<<<<<<< HEAD
                         <%=competed.length %>
-=======
-                        <%= competed.length %>
->>>>>>> 726bb757b460233d2da79b978bd68a2de32af65d
                     </p>
                 </div>
                 <ul class=" list-none">

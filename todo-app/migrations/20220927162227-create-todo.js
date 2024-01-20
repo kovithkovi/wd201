@@ -13,12 +13,19 @@ module.exports = {
       },
       title: {
         type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+          notNull: true,
+          len: 5,
+        },
       },
       dueDate: {
+        allowNull: false,
         type: Sequelize.DATEONLY,
       },
       completed: {
         type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       createdAt: {
         allowNull: false,

@@ -54,17 +54,20 @@
             <%- include('header.ejs') %>
                 <a href="/signout">Sign out</a>
                 <form action="/todos" method="post">
-                    <input type="hidden" name="_csrf" value="<%= csrfToken%>">
-                    <div class="flex gap-2 py-4">
-                        <div class="flex-auto"><input type="text" name="title" placeholder="What's next ?"
-                                class="border border-gray-300 test-gray-900 w-full rounded p-2 text-sm" required></div>
-                        <div class="flext-auto"><input type="date" name="dueDate"
-                                class="border border-gray-300 test-gray-900 w-full rounded p-2 text-sm" required></div>
-                        <div class="flex-none">
-                            <button type="submit"
-                                class="bg-green-600 px-5 py-2 rounded text-white leading-5 font-medium mr-2 mb">Add</button>
+                    <%- include('notifications.ejs') %>
+                        <input type="hidden" name="_csrf" value="<%= csrfToken%>">
+                        <div class="flex gap-2 py-4">
+                            <div class="flex-auto"><input type="text" name="title" placeholder="What's next ?"
+                                    class="border border-gray-300 test-gray-900 w-full rounded p-2 text-sm">
+                            </div>
+                            <div class="flext-auto"><input type="date" name="dueDate"
+                                    class="border border-gray-300 test-gray-900 w-full rounded p-2 text-sm">
+                            </div>
+                            <div class="flex-none">
+                                <button type="submit"
+                                    class="bg-green-600 px-5 py-2 rounded text-white leading-5 font-medium mr-2 mb">Add</button>
+                            </div>
                         </div>
-                    </div>
                 </form>
                 <%- include('todos.ejs') %>
                     <%- include('footer.ejs') %>

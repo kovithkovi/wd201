@@ -11,16 +11,16 @@ const passport = require("passport");
 const connectEnsureLogin = require("connect-ensure-login");
 const session = require("express-session");
 const LocalStrategy = require("passport-local");
-
+const flash = require("connect-flash");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser("Shh! some secret string"));
 app.use(csrf("this_should_be_32_character_long", ["PUT", "DELETE", "POST"]));
 app.set("view engine", "ejs");
-
+app.set("views", path.join(__dirname, "views"));
+app.use(flash());
 app.use(
   session({
     secret: "my-super-secret-key-3484651651461651",
@@ -48,7 +48,7 @@ passport.use(
           if (result) {
             return done(null, user);
           } else {
-            return done("Invalid Password");
+            return done(null, false, { message: "Invalid Password" });
           }
         })
         .catch((err) => {
@@ -73,6 +73,11 @@ passport.deserializeUser((id, done) => {
     });
 });
 
+app.use(function (request, response, next) {
+  response.locals.messages = request.flash();
+  next();
+});
+
 app.post("/users", async (request, response) => {
   const hasedPwd = await bcrypt.hash(request.body.password, saltRounds);
   console.log(hasedPwd);
@@ -85,12 +90,16 @@ app.post("/users", async (request, response) => {
     });
     request.logIn(user, (err) => {
       if (err) {
+        request.flash("error", "Enter the details");
         console.log(err);
+        return response.redirect("/signup");
       }
       response.redirect("/todos");
     });
   } catch (error) {
+    request.flash("error", "Enter the details");
     console.log(error);
+    return response.redirect("/signup");
   }
 });
 
@@ -124,7 +133,10 @@ app.get("/", async (request, response) => {
 
 app.post(
   "/session",
-  passport.authenticate("local", { failureRedirect: "/login" }),
+  passport.authenticate("local", {
+    failureRedirect: "/login",
+    failureFlash: true,
+  }),
   (request, response) => {
     console.log(request.user);
     response.redirect("/todos");
@@ -198,8 +210,8 @@ app.post(
       });
       return response.redirect("/todos");
     } catch (error) {
-      console.log(error);
-      return response.status(422).json(error);
+      request.flash("error", "Title and due date are required");
+      return response.redirect("/todos");
     }
   },
 );
