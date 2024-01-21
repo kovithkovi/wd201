@@ -14,7 +14,6 @@ module.exports = {
       title: {
         type: Sequelize.STRING,
         allowNull: false,
-        notNull: true,
         validate: {
           notNull: true,
           len: 5,
