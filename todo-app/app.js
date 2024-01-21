@@ -177,7 +177,7 @@ app.get(
     // const today = new Date().toISOString()
     // const dueToday =
     if (request.accepts("html")) {
-      response.render("todo", {
+      response.render("todos", {
         overdue,
         duelater,
         duetoday,
