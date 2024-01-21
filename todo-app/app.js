@@ -237,8 +237,8 @@ app.post(
       });
       return response.redirect("/todos");
     } catch (error) {
-      request.flash("error", "Title and due date are required");
-      return response.redirect("/todos");
+      console.log(err);
+      return response.status(422).json(error);
     }
   },
 );
