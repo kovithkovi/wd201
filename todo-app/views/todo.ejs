@@ -20,7 +20,7 @@
         <% for(let i=0; i<todoArray.length; i++) {%>
             <li class="Todo-Item">
                 <div class="flex items-center w-fit my-2 py-1 px-2 rounded hover:bg-purple-50 ">
-                    <input type="checkbox" class="w-4 h-4 text-blue-600 bg-grey-100 rounded border" name="title"
+                    <input type="checkbox" class="w-4 h-4 text-blue-600 bg-grey-100 rounded border"
                         id="<%= todoId%><%= i %>" onclick="TodoUpdate(<%= todoArray[i].id %>)" <%=todoArray[i].completed
                         ? "checked" : "" %>
                     class="w-4 h-4 text-blue-600 bg-grey-100 rounded border" >

@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 const express = require("express");
 const app = express();
-const csrf = require("tiny-csrf");
+var csrf = require("tiny-csrf");
 const cookieParser = require("cookie-parser");
 const { Todo, User } = require("./models");
 const bodyParser = require("body-parser");
@@ -15,6 +15,7 @@ const flash = require("connect-flash");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 app.use(bodyParser.json());
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser("Shh! some secret string"));
 app.use(csrf("this_should_be_32_character_long", ["PUT", "DELETE", "POST"]));
@@ -23,7 +24,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(flash());
 app.use(
   session({
-    secret: "my-super-secret-key-3484651651461651",
+    secret: "my-super-secret-key-2344534532",
     cookie: {
       maxAge: 24 * 60 * 60 * 1000,
     },
@@ -53,6 +54,7 @@ passport.use(
         })
         .catch((err) => {
           console.log(err);
+          return err;
         });
     },
   ),
