@@ -49,6 +49,7 @@
     <div class="grid grid-cols-6">
         <div class="col-start-3 col-span-2">
             <%- include('header.ejs') %>
+                <a href="/signout" class="text-red-600">Sign-out</a>
                 <form action="/todos" method="post">
                     <%- include('notifications.ejs') %>
                         <input type="hidden" name="_csrf" value="<%= csrfToken%>">
@@ -72,9 +73,6 @@
                             <%- include('todo.ejs', {title: "Completed" , todoArray: completed,
                                 todoId: "count-completed" }) %>
                                 <%- include('footer.ejs') %>
-                                    <button id="/signout" onclick="window.location.href='/signout'"
-                                        class="bg-red-500 rounded px-4 py-2 text-white">
-                                        signout</button>
         </div>
     </div>
 </body>
