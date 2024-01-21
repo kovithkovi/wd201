@@ -91,21 +91,21 @@
                 <div class="flex">
                     <h5>Completed Items</h5>
                     <p class="mx-2 px-2 bg-gray-300 rounded" id="count-completed">
-                        <%=competed.length %>
+                        <%=completed.length %>
                     </p>
                 </div>
                 <ul class=" list-none">
-                    <% for(var i=0; i<competed.length; i++) {%>
+                    <% for(var i=0; i<completed.length; i++) {%>
                         <li class="Todo-Item">
                             <div class="flex items-center w-fit my-2 py-1 px-2 rounded hover:bg-purple-50 ">
                                 <input type="checkbox" name="title" id="count-completed<%= i %>"
-                                    onclick="TodoUpdate(<%= competed[i].id %>)" <%=competed[i].completed ? "checked"
+                                    onclick="TodoUpdate(<%= completed[i].id %>)" <%=completed[i].completed ? "checked"
                                     : "" %>
                                 class="w-4 h-4 text-blue-600 bg-grey-100 rounded border">
                                 <label for="count-completed<%= i %>" class="ml-2 text-sm text-gray-600 cursor-pointer">
-                                    <%= competed[i].title %>
+                                    <%= completed[i].title %>
                                 </label>
-                                <a href="" class="hidden trash-icon ml-2" onclick="deleteTodo(<%= competed[i].id %>)">
+                                <a href="" class="hidden trash-icon ml-2" onclick="deleteTodo(<%= completed[i].id %>)">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                         <path stroke-linecap="round" stroke-linejoin="round"

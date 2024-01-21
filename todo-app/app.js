@@ -173,7 +173,7 @@ app.get(
     const overdue = await Todo.getOverdue(loggedInUser);
     const duetoday = await Todo.getdueToday(loggedInUser);
     const duelater = await Todo.getDuelater(loggedInUser);
-    const competed = await Todo.getCompletedTodos(loggedInUser);
+    const completed = await Todo.getCompletedTodos(loggedInUser);
     // const today = new Date().toISOString()
     // const dueToday =
     if (request.accepts("html")) {
@@ -181,7 +181,7 @@ app.get(
         overdue,
         duelater,
         duetoday,
-        competed,
+        completed,
         csrfToken: request.csrfToken(),
       });
     } else {
@@ -189,7 +189,7 @@ app.get(
         overdue,
         duelater,
         duetoday,
-        competed,
+        completed,
       });
     }
   },
@@ -227,6 +227,10 @@ app.post(
     const { title, dueDate } = request.body;
     if (!title || !dueDate) {
       request.flash("error", "Title and due date are required");
+      return response.redirect("/todos");
+    }
+    if (title.length < 5) {
+      request.flash("error", "Title must be at least 5 characters long");
       return response.redirect("/todos");
     }
     try {
