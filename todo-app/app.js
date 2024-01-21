@@ -225,11 +225,8 @@ app.post(
   connectEnsureLogin.ensureLoggedIn(),
   async function (request, response) {
     const { title, dueDate } = request.body;
-    if (!title || !dueDate || title.length < 5) {
-      request.flash(
-        "error",
-        "Title length should be greather than 5 and due date are required",
-      );
+    if (!title || !dueDate) {
+      request.flash("error", "Title and due date are required");
       return response.redirect("/todos");
     }
     try {
