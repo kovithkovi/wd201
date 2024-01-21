@@ -128,11 +128,47 @@ app.get("/signout", (request, response, next) => {
     response.redirect("/");
   });
 });
+// app.get("/", async (request, response) => {
+//   if (request.accepts("html")) {
+//     response.render("index", {
+//       csrfToken: request.csrfToken(),
+//     });
+//   }
+// });
+
 app.get("/", async (request, response) => {
-  if (request.accepts("html")) {
-    response.render("index", {
-      csrfToken: request.csrfToken(),
-    });
+  if (request.isAuthenticated()) {
+    const loggedInUser = request.user.id;
+    console.log(loggedInUser);
+    const overdue = await Todo.getOverdue(loggedInUser);
+    const duetoday = await Todo.getdueToday(loggedInUser);
+    const duelater = await Todo.getDuelater(loggedInUser);
+    const competed = await Todo.getCompletedTodos(loggedInUser);
+
+    if (request.accepts("html")) {
+      response.render("todo", {
+        overdue,
+        duelater,
+        duetoday,
+        competed,
+        csrfToken: request.csrfToken(),
+      });
+    } else {
+      response.json({
+        overdue,
+        duelater,
+        duetoday,
+        competed,
+      });
+    }
+  } else {
+    if (request.accepts("html")) {
+      response.render("index", {
+        csrfToken: request.csrfToken(),
+      });
+    } else {
+      response.json({ message: "Not authenticated" });
+    }
   }
 });
 
@@ -143,8 +179,11 @@ app.post(
     failureFlash: true,
   }),
   (request, response) => {
-    console.log(request.user);
-    response.redirect("/todos");
+    const redirectTo = request.session.returnTo || "/todos";
+    delete request.session.returnTo; // Clear the stored URL
+    response.redirect(redirectTo);
+    // console.log(request.user);
+    // response.redirect("/todos");
   },
 );
 app.get(
@@ -246,9 +285,10 @@ app.delete(
   "/todos/:id",
   connectEnsureLogin.ensureLoggedIn(),
   async function (request, response) {
+    console.log(request.userId);
     console.log("We have to delete a Todo with ID: ", request.params.id);
     try {
-      await Todo.removeTodo(request.params.id);
+      await Todo.removeTodo(request.params.id, request.user.id);
       return response.json({ success: true });
     } catch (error) {
       console.log(error);

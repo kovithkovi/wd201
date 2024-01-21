@@ -13,7 +13,7 @@
             .querySelector('meta[name="csrf-token"]')
             .getAttribute('content')
         function TodoUpdate(id) {
-            console.log(id)
+            // console.log(id)
             fetch(`/todos/${id}`, {
                 method: "put",
                 headers: { "Content-Type": "application/json" },
@@ -27,7 +27,7 @@
                 .catch((err) => console.error(err))
         };
         function deleteTodo(id) {
-            console.log(id)
+            console.log("Deleting Todo", id)
             fetch(`/todos/${id}`, {
                 method: "delete",
                 headers: { "Content-Type": "application/json" },
