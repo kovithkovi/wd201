@@ -67,7 +67,9 @@
                 </form>
                 <%- include('todos.ejs') %>
                     <%- include('footer.ejs') %>
-                        <button class="bg-red-500 text-white p-2 rounded"><a href="/signout">signout</a></button>
+                        <button id="/signout" type="submit" onclick="window.location.href='/signout'"
+                            class="bg-red-500 rounded px-4 py-2 text-white">
+                            signout</button>
         </div>
 
     </div>
