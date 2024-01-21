@@ -23,7 +23,7 @@
                     <input type="checkbox" class="w-4 h-4 text-blue-600 bg-grey-100 rounded border" name="title"
                         id="<%= todoId%><%= i %>" onclick="TodoUpdate(<%= todoArray[i].id %>)" <%=todoArray[i].completed
                         ? "checked" : "" %>
-                    class="w-4 h-4 text-blue-600 bg-grey-100 rounded border">
+                    class="w-4 h-4 text-blue-600 bg-grey-100 rounded border" >
                     <label for="<%= todoId%><%= i %>" class="ml-2 text-sm text-gray-600 cursor-pointer">
                         <%= todoArray[i].title %>
                     </label>
