@@ -65,11 +65,16 @@
                             </div>
                         </div>
                 </form>
-                <%- include('todo.ejs') %>
-                    <%- include('footer.ejs') %>
-                        <button id="/signout" type="submit" onclick="window.location.href='/signout'"
-                            class="bg-red-500 rounded px-4 py-2 text-white">
-                            signout</button>
+                <%- include('todo.ejs', {title: "Overdue" , todoArray: overdue, todoId: "count-overdue" }) %>
+                    <%- include('todo.ejs', {title: "Due Today" , todoArray: duetoday, todoId: "count-due-today" }) %>
+                        <%- include('todo.ejs', {title: "Due Later" , todoArray: duelater, todoId: "count-due-later" })
+                            %>
+                            <%- include('todo.ejs', {title: "Completed" , todoArray: completed,
+                                todoId: "count-completed" }) %>
+                                <%- include('footer.ejs') %>
+                                    <button id="/signout" type="submit" onclick="window.location.href='/signout'"
+                                        class="bg-red-500 rounded px-4 py-2 text-white">
+                                        signout</button>
         </div>
     </div>
 </body>
