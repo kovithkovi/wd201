@@ -138,29 +138,7 @@ app.get("/signout", (request, response, next) => {
 
 app.get("/", async (request, response) => {
   if (request.isAuthenticated()) {
-    const loggedInUser = request.user.id;
-    console.log(loggedInUser);
-    const overdue = await Todo.getOverdue(loggedInUser);
-    const duetoday = await Todo.getdueToday(loggedInUser);
-    const duelater = await Todo.getDuelater(loggedInUser);
-    const competed = await Todo.getCompletedTodos(loggedInUser);
-
-    if (request.accepts("html")) {
-      response.render("todo", {
-        overdue,
-        duelater,
-        duetoday,
-        competed,
-        csrfToken: request.csrfToken(),
-      });
-    } else {
-      response.json({
-        overdue,
-        duelater,
-        duetoday,
-        competed,
-      });
-    }
+    return response.redirect("/todos");
   } else {
     if (request.accepts("html")) {
       response.render("index", {
