@@ -26,11 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     static getTodos(userId) {
-      return this.findAll({
-        where: {
-          userId,
-        },
-      });
+      return this.findAll({});
     }
 
     static getOverdue(userId) {

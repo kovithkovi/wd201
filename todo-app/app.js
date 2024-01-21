@@ -115,9 +115,13 @@ app.get("/login", async (request, response) => {
 });
 
 app.get("/signup", (request, response) => {
-  response.render("signup", {
-    csrfToken: request.csrfToken(),
-  });
+  if (request.isAuthenticated()) {
+    response.redirect("/todos");
+  } else {
+    response.render("signup", {
+      csrfToken: request.csrfToken(),
+    });
+  }
 });
 
 app.get("/signout", (request, response, next) => {
@@ -205,6 +209,17 @@ app.use(express.static(path.join(__dirname, "public")));
 //   // Then, we have to respond with all Todos, like:
 //   // response.send(todos)
 // });
+
+app.get("/todos", async function (_request, response) {
+  try {
+    console.log("Processing list of all Todos ...");
+    const todos = await Todo.findAll();
+    response.json(todos);
+  } catch (error) {
+    console.log(error);
+    return response.status(500).json(error);
+  }
+});
 
 app.get(
   "/todos/:id",
